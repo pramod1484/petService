@@ -15,4 +15,11 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Relatetions extends Eloquent {
 
+    /**
+     * The database table relations by the model.
+     *
+     * @var string
+     */
+    protected $table = 'relations';
+
 }

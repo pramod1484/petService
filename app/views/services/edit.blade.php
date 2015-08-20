@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading"><h4>Add Service</h4></div>
-                {{ Form::open(array('url' => 'services','id' => "formAdd", 'name' => "formAdd")) }}
+                {{ Form::model($service,array('url' => ['services', $service->id], 'id' => "formEdit", 'method' => "PATCH")) }}
                 @include('services.form')
                 {{ Form::close() }}
             </div>

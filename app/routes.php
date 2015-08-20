@@ -15,5 +15,7 @@ Route::get('/', function() {
     return View::make('hello');
 });
 
-Route::resource('/pets', 'PetController');
-Route::resource('/services', 'ServiceController');
+Route::group(array('before' => 'csrf'), function() {
+    Route::resource('/pets', 'PetController');
+    Route::resource('/services', 'ServiceController');
+});

@@ -21,7 +21,7 @@ class PetController extends \BaseController {
      */
     public function create()
     {
-       return View::make('pets/create');
+        return View::make('pets/create');
     }
 
     /**
@@ -31,9 +31,20 @@ class PetController extends \BaseController {
      */
     public function store()
     {
-        //
-    }
+        $validator = Validator::make(
+                        Input::all(), array('name' => 'required|min:3|unique:pet_types,name')
+        );
 
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        $pet = new PetTypes();
+        $pet->name = Input::get('name');
+
+        $pet->save();
+
+        return Redirect::to('pets');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -42,14 +53,13 @@ class PetController extends \BaseController {
      * @return Response
      */
     public function destroy($id)
-    {        
+    {
         $pet = PetTypes::find($id);
         $pet->petServices()->detach();
-        if($pet->delete())
-        {
+        if ($pet->delete()) {
             return Response::json('Pet successfully deleted.');
         }
-        
+
         return false;
     }
 

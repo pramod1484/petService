@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder {
         $this->command->info('PetTypes table seeded!');
         $this->call('ServicesTableSeeder');
         $this->command->info('Services table seeded!');
+        $this->call('RelationTableSeeder');
+        $this->command->info('Relation table seeded!');
     }
 
 }

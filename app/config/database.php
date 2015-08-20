@@ -50,7 +50,7 @@ return array(
             'host' => 'localhost',
             'database' => 'pet_service',
             'username' => 'root',
-            'password' => '',
+            'password' => '123456',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
