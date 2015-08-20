@@ -24,6 +24,7 @@ class PetTypes extends Eloquent {
      */
     protected $table = 'pet_types';
     protected $dates = ['deleted_at'];
+      protected $visible = array('name');
 
     /**
      * Pet Services relationship

@@ -7,8 +7,10 @@
 
         <title>Pet Services</title>
         {{ HTML::style('/bower_components/bootstrap/dist/css/bootstrap.min.css') }}
+         {{ HTML::style('/dev_css/style.css') }}
     </head>
     <body>
+    @include('layouts.header')
         <div class="container">
             @yield('content')
         </div>
@@ -16,5 +18,6 @@
     <footer>
         {{ HTML::script('bower_components/jquery/dist/jquery.min.js') }}
         {{ HTML::script('bower_components/bootstrap/dist/js/bootstrap.min.js') }}
+        {{ HTML::script('dev_js/petservice.common.js') }}
     </footer>
 </html>

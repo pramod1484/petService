@@ -16,3 +16,4 @@ Route::get('/', function() {
 });
 
 Route::resource('/pets', 'PetController');
+Route::resource('/services', 'ServiceController');

@@ -9,7 +9,9 @@ class ServiceController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		   $services = Services::with('serviciablePets')->get();
+
+			return View::make('services/index', compact('services'));
 	}
 
 
@@ -20,7 +22,7 @@ class ServiceController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('services.create');
 	}
 
 
@@ -79,7 +81,14 @@ class ServiceController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		 $service = Services::find($id);
+        $service->serviciablePets()->detach();
+        if($service->delete())
+        {
+            return Response::json('Pet successfully deleted.');
+        }
+        
+        return false;
 	}
 
 

@@ -9,7 +9,7 @@ class PetController extends \BaseController {
      */
     public function index()
     {
-        $pets = PetTypes::with('petServices')->get()->toArray();
+        $pets = PetTypes::with('petServices')->get();
 
         return View::make('pets/index', compact('pets'));
     }
@@ -21,7 +21,7 @@ class PetController extends \BaseController {
      */
     public function create()
     {
-        //
+       return View::make('pets/create');
     }
 
     /**
@@ -34,38 +34,6 @@ class PetController extends \BaseController {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -74,8 +42,15 @@ class PetController extends \BaseController {
      * @return Response
      */
     public function destroy($id)
-    {
-        //
+    {        
+        $pet = PetTypes::find($id);
+        $pet->petServices()->detach();
+        if($pet->delete())
+        {
+            return Response::json('Pet successfully deleted.');
+        }
+        
+        return false;
     }
 
 }

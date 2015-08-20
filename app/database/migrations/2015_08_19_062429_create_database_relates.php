@@ -27,7 +27,7 @@ class CreateDatabaseRelates extends Migration {
      */
     public function down()
     {
-        Schema::drop('relates');
+        Schema::drop('relations');
     }
 
 }
